@@ -1,6 +1,7 @@
 # gcs-prewarm
-
-## Build your own image
+The underlying mechanism followed the official [Documentation](https://cloud.google.com/storage/docs/request-rate?hl=zh-cn) on GCS QPS ramp-up specified the initial IO Limit as: Read 5000/s，Write 1000/s. For any QPS rate expected above the number, a ramp up is needed to avoid errors (429, 408, 5xx) that implied a cooling period for bucket scalability.
+The tool developed helps to ramp up, allowing any bucket to be ramped up to desired write and read QPS at any defined read-write ratio.
+## Build your own image(Optional)
 ```
 docker build -t hellof20/gcs-prewarm:2024090104 .
 ```
