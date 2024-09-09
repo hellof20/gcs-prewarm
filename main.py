@@ -33,22 +33,14 @@ def upload_blob(bucket, read_write_ratio):
         try:
             blob = bucket.blob(blob_name)
             blob.upload_from_filename('myfile')
-            # print(f"Thread: {threading.get_native_id()} - Uploaded: {blob_name}")
-            for _ in range(read_write_ratio):
+            for _ in range(int(read_write_ratio)):
                 blob.reload()
 
             blob.delete()
-            # print(f"Thread: {threading.get_native_id()} - Deleted: {blob_name}")
             time.sleep(0.1)
-
         except Exception as e:
-            if (hasattr(e, 'code') and e.code == RATE_LIMIT_STATUS_CODE) or \
-               (hasattr(e, 'response') and hasattr(e.response, 'status_code') and e.response.status_code in RATE_LIMIT_STATUS_CODE):
-                    print(f"Rate limit hit")
-                    return
-            else:
-                print(f"Error {e} Exiting thread {threading.get_native_id()}.")
-                return
+            print(f"Error: {e}")
+
 
 def main(bucket_name, thread_count):
     bucket_name = bucket_name
