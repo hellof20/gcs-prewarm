@@ -27,7 +27,8 @@ gcloud run jobs deploy gcs-prewarm \
 ## Reference
 不同task数量和读写比例的情况下可以达到的性能如下
 
-<img width="357" alt="image" src="https://github.com/user-attachments/assets/2fa91d07-15cb-4809-86b3-960345793862">
+![image](https://github.com/user-attachments/assets/a6bacb5b-aebb-4e33-a7a7-6efca4243455)
+
 
 ## Build your own image (Optional)
 ```
